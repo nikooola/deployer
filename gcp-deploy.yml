@@ -1,7 +1,7 @@
 .gcp_deploy: 
   image: nikoola/gck_image:latest
   before_script:
-    - echo "$SERVICE_ACCOUNT_CREDENTIALS" > key.json
+    - echo '$SERVICE_ACCOUNT_CREDENTIALS' > key.json
     - gcloud auth activate-service-account --key-file=key.json
     - gcloud config set project $PROJECT
     - gcloud config set container/cluster $CLUSTER
