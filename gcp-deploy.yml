@@ -1,3 +1,6 @@
+variables:
+  K8S_TECH_IMAGE: "${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}"
+
 .gcp_deploy: 
   image: nikoola/gck_image:latest
   before_script:
@@ -9,5 +12,5 @@
     - gcloud container clusters get-credentials $CLUSTER --zone $ZONE
   script:
     - cd k8s/$APP/overlays/$OVERLAY/
-    - kustomize edit set image $CI_REGISTRY_IMAGE=$NEW_IMAGE
+    - kustomize edit set image "K8S_IMAGE"="${K8S_TECH_IMAGE}"
     - kustomize build . | kubectl apply -f -
