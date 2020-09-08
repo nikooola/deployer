@@ -1,0 +1,6 @@
+includes:
+   - 'https://gitlab.programeri.tech/deployer/gcp/-/raw/master/docker-helper.yml'
+
+docker-build:
+  extends: .build
+  
